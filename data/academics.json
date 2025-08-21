@@ -1,4 +1,44 @@
 {
+  "university": {
+    "name": "University of Peradeniya",
+    "degree": "BSc (Hons) in Computer Engineering",
+    "current_gpa": "X.XX / 4.00",
+    "credits_completed": "NNN",
+    "expected_graduation": "2025",
+    "highlights": [
+      "Advanced computer architecture and processor design",
+      "RISC-V pipeline implementation and optimization",
+      "Modern software development and web technologies",
+      "Hardware-software co-design methodologies",
+      "Safety-critical system development"
+    ],
+    "recent_projects": [
+      "Safe Plus – Smart Safety Helmet with real-time monitoring",
+      "RV32IM Pipeline – 5-stage RISC-V processor implementation",
+      "Denture Design Studio – Interactive educational platform"
+    ]
+  },
+  "al_exam": {
+    "year": "2020",
+    "stream": "Physical Science",
+    "results": [
+      {
+        "subject": "Combined Mathematics",
+        "grade": "A"
+      },
+      {
+        "subject": "Physics", 
+        "grade": "A"
+      },
+      {
+        "subject": "Chemistry",
+        "grade": "A"
+      }
+    ],
+    "z_score": "Z.SCORE-PLACEHOLDER",
+    "district_rank": "DISTRICT-RANK-PLACEHOLDER",
+    "island_rank": "ISLAND-RANK-PLACEHOLDER"
+  },
   "ol_exam": {
     "year": "2018",
     "school": "Your School Name",
@@ -39,39 +79,6 @@
         "subject": "ICT",
         "grade": "A"
       }
-    ]
-  },
-  "al_exam": {
-    "year": "2020",
-    "stream": "Physical Science",
-    "results": [
-      {
-        "subject": "Combined Mathematics",
-        "grade": "A"
-      },
-      {
-        "subject": "Physics",
-        "grade": "A"
-      },
-      {
-        "subject": "Chemistry",
-        "grade": "A"
-      }
-    ],
-    "z_score": "Z.SCORE-PLACEHOLDER",
-    "district_rank": "DISTRICT-RANK-PLACEHOLDER",
-    "island_rank": "ISLAND-RANK-PLACEHOLDER"
-  },
-  "university": {
-    "name": "University of Peradeniya",
-    "degree": "BSc (Hons) in Computer Engineering",
-    "current_gpa": "X.XX / 4.00",
-    "credits_completed": "NNN",
-    "expected_graduation": "2025",
-    "highlights": [
-      "Focus on embedded systems & computer architecture",
-      "RISC-V pipeline / Verilog design experience",
-      "Safety-oriented hardware/software co-design"
     ]
   }
 }

@@ -160,19 +160,23 @@ class PortfolioApp {
             console.error('Error loading academics:', error);
             // Fallback academics data
             this.academics = {
-                "ol_exam": {
-                    "year": "2018",
-                    "school": "Your School Name",
-                    "results": [
-                        { "subject": "Mathematics", "grade": "A" },
-                        { "subject": "Science", "grade": "A" },
-                        { "subject": "English", "grade": "A" },
-                        { "subject": "Sinhala", "grade": "A" },
-                        { "subject": "History", "grade": "A" },
-                        { "subject": "Buddhism", "grade": "A" },
-                        { "subject": "Art", "grade": "B" },
-                        { "subject": "Tamil", "grade": "B" },
-                        { "subject": "ICT", "grade": "A" }
+                "university": {
+                    "name": "University of Peradeniya",
+                    "degree": "BSc (Hons) in Computer Engineering",
+                    "current_gpa": "X.XX / 4.00",
+                    "credits_completed": "NNN",
+                    "expected_graduation": "2025",
+                    "highlights": [
+                        "Advanced computer architecture and processor design",
+                        "RISC-V pipeline implementation and optimization",
+                        "Modern software development and web technologies",
+                        "Hardware-software co-design methodologies",
+                        "Safety-critical system development"
+                    ],
+                    "recent_projects": [
+                        "Safe Plus – Smart Safety Helmet with real-time monitoring",
+                        "RV32IM Pipeline – 5-stage RISC-V processor implementation",
+                        "Denture Design Studio – Interactive educational platform"
                     ]
                 },
                 "al_exam": {
@@ -187,16 +191,19 @@ class PortfolioApp {
                     "district_rank": "DISTRICT-RANK-PLACEHOLDER", 
                     "island_rank": "ISLAND-RANK-PLACEHOLDER"
                 },
-                "university": {
-                    "name": "University of Peradeniya",
-                    "degree": "BSc (Hons) in Computer Engineering",
-                    "current_gpa": "X.XX / 4.00",
-                    "credits_completed": "NNN",
-                    "expected_graduation": "2025",
-                    "highlights": [
-                        "Focus on embedded systems & computer architecture",
-                        "RISC-V pipeline / Verilog design experience",
-                        "Safety-oriented hardware/software co-design"
+                "ol_exam": {
+                    "year": "2018",
+                    "school": "Your School Name",
+                    "results": [
+                        { "subject": "Mathematics", "grade": "A" },
+                        { "subject": "Science", "grade": "A" },
+                        { "subject": "English", "grade": "A" },
+                        { "subject": "Sinhala", "grade": "A" },
+                        { "subject": "History", "grade": "A" },
+                        { "subject": "Buddhism", "grade": "A" },
+                        { "subject": "Art", "grade": "B" },
+                        { "subject": "Tamil", "grade": "B" },
+                        { "subject": "ICT", "grade": "A" }
                     ]
                 }
             };
@@ -225,19 +232,19 @@ class PortfolioApp {
         console.log('Rendering academics:', this.academics);
         let html = '';
 
-        // Ordinary Level
-        if (this.academics.ol_exam) {
-            html += this.renderOLSection(this.academics.ol_exam);
+        // University (Most Recent - Priority)
+        if (this.academics.university) {
+            html += this.renderUniversitySection(this.academics.university);
         }
 
-        // Advanced Level
+        // Advanced Level (Compact)
         if (this.academics.al_exam) {
             html += this.renderALSection(this.academics.al_exam);
         }
 
-        // University
-        if (this.academics.university) {
-            html += this.renderUniversitySection(this.academics.university);
+        // Ordinary Level (Compact)
+        if (this.academics.ol_exam) {
+            html += this.renderOLSection(this.academics.ol_exam);
         }
 
         container.innerHTML = html;
@@ -324,24 +331,44 @@ class PortfolioApp {
             `<li>${highlight}</li>`
         ).join('') : '';
 
+        const projectsList = uniData.recent_projects ? uniData.recent_projects.map(project => 
+            `<li>${project}</li>`
+        ).join('') : '';
+
         return `
-            <div class="academic-section">
-                <h3>University</h3>
-                <div class="academic-info">
+            <div class="academic-section university-section">
+                <h3>Current Academic Journey</h3>
+                <div class="academic-info university-info">
                     <div class="academic-meta">
                         <span class="academic-year">${uniData.name}</span>
                         <span class="academic-school">${uniData.degree}</span>
                     </div>
-                    <div style="margin: 1rem 0;">
-                        <p><strong>Current GPA:</strong> ${uniData.current_gpa}</p>
-                        <p><strong>Credits Completed:</strong> ${uniData.credits_completed}</p>
-                        <p><strong>Expected Graduation:</strong> ${uniData.expected_graduation}</p>
+                    <div style="margin: 1.5rem 0;">
+                        <div class="university-stats">
+                            <div class="stat-item">
+                                <strong>Current GPA:</strong> ${uniData.current_gpa}
+                            </div>
+                            <div class="stat-item">
+                                <strong>Credits Completed:</strong> ${uniData.credits_completed}
+                            </div>
+                            <div class="stat-item">
+                                <strong>Expected Graduation:</strong> ${uniData.expected_graduation}
+                            </div>
+                        </div>
                     </div>
                     ${highlightsList ? `
                         <div>
-                            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Key Highlights</h4>
+                            <h4 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem;">Areas of Expertise</h4>
                             <ul class="university-highlights">
                                 ${highlightsList}
+                            </ul>
+                        </div>
+                    ` : ''}
+                    ${projectsList ? `
+                        <div style="margin-top: 1.5rem;">
+                            <h4 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem;">Recent Academic Projects</h4>
+                            <ul class="university-projects">
+                                ${projectsList}
                             </ul>
                         </div>
                     ` : ''}

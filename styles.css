@@ -326,6 +326,97 @@ section {
   text-align: center;
 }
 
+/* University Section - More Prominent */
+.university-section {
+  margin-bottom: 4rem;
+}
+
+.university-section h3 {
+  font-size: calc(var(--font-size-lg) * 1.2);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.university-info {
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.university-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.university-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.stat-item {
+  padding: 1rem;
+  background-color: var(--bg);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--accent);
+  font-size: var(--font-size-sm);
+}
+
+.university-projects {
+  list-style: none;
+  padding: 0;
+}
+
+.university-projects li {
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.university-projects li::before {
+  content: '🚀';
+  position: absolute;
+  left: 0;
+  font-size: 1.1rem;
+}
+
+.university-projects li:last-child {
+  border-bottom: none;
+}
+
+/* O/L and A/L Sections - More Compact */
+.academic-section:not(.university-section) h3 {
+  font-size: var(--font-size-base);
+  margin-bottom: 1rem;
+  text-align: left;
+  opacity: 0.8;
+}
+
+.academic-section:not(.university-section) .academic-info {
+  padding: 1.5rem;
+  background-color: var(--bg-alt);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.academic-section:not(.university-section) {
+  margin-bottom: 2rem;
+}
+
 .academic-info {
   background-color: var(--bg-alt);
   border-radius: var(--radius-lg);
