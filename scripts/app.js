@@ -1,70 +1,98 @@
-// Main Application Logic
+// Main Portfolio Application
 class PortfolioApp {
     constructor() {
         this.projects = [];
+        this.academics = null;
         this.filteredProjects = [];
-        this.availableTags = new Set();
-        this.activeTags = new Set();
+        this.activeFilter = 'all';
         this.searchTerm = '';
-        this.metrics = null;
+        this.modal = null;
+        this.observer = null;
         
         this.init();
     }
 
     async init() {
-        this.setupEventListeners();
+        this.setupBasicFunctionality();
         await this.loadData();
         this.render();
+        this.setupAnimations();
     }
 
-    setupEventListeners() {
-        // Search input
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                this.searchTerm = e.target.value.toLowerCase();
-                this.filterProjects();
-            });
+    setupBasicFunctionality() {
+        // Set current year in footer
+        const yearElement = document.getElementById('year');
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
         }
 
-        // Modal controls
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalClose = document.getElementById('modalClose');
+        // Setup smooth scrolling for navigation links
+        this.setupSmoothScrolling();
         
-        if (modalOverlay) {
-            modalOverlay.addEventListener('click', () => this.closeModal());
-        }
+        // Setup modal functionality
+        this.setupModal();
         
-        if (modalClose) {
-            modalClose.addEventListener('click', () => this.closeModal());
-        }
+        // Setup search and filter functionality
+        this.setupSearchAndFilter();
+    }
 
-        // Keyboard events
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                this.closeModal();
-            }
-        });
-
-        // Smooth scrolling for anchor links
+    setupSmoothScrolling() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', (e) => {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(anchor.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const navHeight = document.querySelector('.nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
     }
 
+    setupModal() {
+        this.modal = document.getElementById('project-modal');
+        const closeBtn = document.getElementById('modal-close');
+        
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.closeModal());
+        }
+
+        // Close modal on backdrop click
+        if (this.modal) {
+            this.modal.addEventListener('click', (e) => {
+                if (e.target === this.modal) {
+                    this.closeModal();
+                }
+            });
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal && this.modal.open) {
+                this.closeModal();
+            }
+        });
+    }
+
+    setupSearchAndFilter() {
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.searchTerm = e.target.value.toLowerCase().trim();
+                this.filterAndRenderProjects();
+            });
+        }
+    }
+
     async loadData() {
         await Promise.all([
             this.loadProjects(),
-            this.loadMetrics()
+            this.loadAcademics()
         ]);
     }
 
@@ -75,134 +103,231 @@ class PortfolioApp {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             this.projects = await response.json();
-            this.extractTags();
             this.filteredProjects = [...this.projects];
         } catch (error) {
             console.error('Error loading projects:', error);
-            this.projects = this.getFallbackProjects();
-            this.extractTags();
-            this.filteredProjects = [...this.projects];
+            this.projects = [];
+            this.filteredProjects = [];
         }
     }
 
-    async loadMetrics() {
+    async loadAcademics() {
         try {
-            // Try to fetch from the main metrics endpoint
-            const response = await fetch('https://raw.githubusercontent.com/ravindu439/ravindu439/main/metrics.json');
+            const response = await fetch('data/academics.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            this.metrics = await response.json();
+            this.academics = await response.json();
         } catch (error) {
-            console.warn('Could not fetch live metrics, using fallback:', error);
-            try {
-                // Fallback to local metrics file
-                const fallbackResponse = await fetch('data/metrics-fallback.json');
-                if (fallbackResponse.ok) {
-                    this.metrics = await fallbackResponse.json();
-                } else {
-                    throw new Error('Fallback metrics not available');
-                }
-            } catch (fallbackError) {
-                console.error('Error loading fallback metrics:', fallbackError);
-                this.metrics = this.getFallbackMetrics();
-            }
+            console.error('Error loading academics:', error);
+            this.academics = null;
         }
-    }
-
-    extractTags() {
-        this.availableTags.clear();
-        this.projects.forEach(project => {
-            if (project.tags && Array.isArray(project.tags)) {
-                project.tags.forEach(tag => this.availableTags.add(tag));
-            }
-        });
-    }
-
-    filterProjects() {
-        this.filteredProjects = this.projects.filter(project => {
-            // Search filter
-            const matchesSearch = !this.searchTerm || 
-                project.name.toLowerCase().includes(this.searchTerm) ||
-                project.description.toLowerCase().includes(this.searchTerm) ||
-                (project.tech && project.tech.some(tech => tech.toLowerCase().includes(this.searchTerm)));
-
-            // Tag filter
-            const matchesTags = this.activeTags.size === 0 || 
-                (project.tags && project.tags.some(tag => this.activeTags.has(tag)));
-
-            return matchesSearch && matchesTags;
-        });
-
-        this.renderProjects();
-    }
-
-    toggleTag(tag) {
-        if (this.activeTags.has(tag)) {
-            this.activeTags.delete(tag);
-        } else {
-            this.activeTags.add(tag);
-        }
-        this.filterProjects();
-        this.renderFilterTags();
     }
 
     render() {
-        this.renderMetrics();
-        this.renderFilterTags();
+        this.renderAcademics();
+        this.renderFilterButtons();
         this.renderProjects();
     }
 
-    renderMetrics() {
-        const metricsGrid = document.getElementById('metricsGrid');
-        if (!metricsGrid || !this.metrics) return;
-
-        const metricCards = metricsGrid.querySelectorAll('.metric-card');
-        const metricsData = [
-            { value: this.metrics.repositories || 0, label: 'Repositories' },
-            { value: this.metrics.stars || 0, label: 'Stars' },
-            { value: this.metrics.followers || 0, label: 'Followers' },
-            { value: this.metrics.commits || 0, label: 'Commits' }
-        ];
-
-        metricCards.forEach((card, index) => {
-            if (metricsData[index]) {
-                card.classList.remove('loading');
-                const valueElement = card.querySelector('.metric-value');
-                const labelElement = card.querySelector('.metric-label');
-                
-                if (valueElement) {
-                    valueElement.textContent = this.formatNumber(metricsData[index].value);
-                }
-                if (labelElement) {
-                    labelElement.textContent = metricsData[index].label;
-                }
+    renderAcademics() {
+        const container = document.getElementById('academics-content');
+        if (!container || !this.academics) {
+            if (container) {
+                container.innerHTML = '<div class="loading-placeholder">Failed to load academic information.</div>';
             }
+            return;
+        }
+
+        let html = '';
+
+        // Ordinary Level
+        if (this.academics.ol_exam) {
+            html += this.renderOLSection(this.academics.ol_exam);
+        }
+
+        // Advanced Level
+        if (this.academics.al_exam) {
+            html += this.renderALSection(this.academics.al_exam);
+        }
+
+        // University
+        if (this.academics.university) {
+            html += this.renderUniversitySection(this.academics.university);
+        }
+
+        container.innerHTML = html;
+    }
+
+    renderOLSection(olData) {
+        const resultsTable = olData.results ? olData.results.map(result => 
+            `<tr><td>${result.subject}</td><td>${result.grade}</td></tr>`
+        ).join('') : '';
+
+        return `
+            <div class="academic-section">
+                <h3>Ordinary Level (G.C.E. O/L)</h3>
+                <div class="academic-info">
+                    <div class="academic-meta">
+                        <span class="academic-year">Year: ${olData.year}</span>
+                        <span class="academic-school">${olData.school}</span>
+                    </div>
+                    ${resultsTable ? `
+                        <div class="table-scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${resultsTable}
+                                </tbody>
+                            </table>
+                        </div>
+                    ` : '<p>Results data not available.</p>'}
+                </div>
+            </div>
+        `;
+    }
+
+    renderALSection(alData) {
+        const resultsTable = alData.results ? alData.results.map(result => 
+            `<tr><td>${result.subject}</td><td>${result.grade}</td></tr>`
+        ).join('') : '';
+
+        const extrasHtml = (alData.z_score || alData.district_rank || alData.island_rank) ? `
+            <div class="al-extras">
+                ${alData.z_score ? `<strong>Z-Score:</strong> ${alData.z_score}<br>` : ''}
+                ${alData.district_rank ? `<strong>District Rank:</strong> ${alData.district_rank}<br>` : ''}
+                ${alData.island_rank ? `<strong>Island Rank:</strong> ${alData.island_rank}` : ''}
+            </div>
+        ` : '';
+
+        return `
+            <div class="academic-section">
+                <h3>Advanced Level (G.C.E. A/L)</h3>
+                <div class="academic-info">
+                    <div class="academic-meta">
+                        <span class="academic-year">Year: ${alData.year}</span>
+                        <span class="academic-school">Stream: ${alData.stream}</span>
+                    </div>
+                    ${resultsTable ? `
+                        <div class="table-scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${resultsTable}
+                                </tbody>
+                            </table>
+                        </div>
+                    ` : '<p>Results data not available.</p>'}
+                    ${extrasHtml}
+                </div>
+            </div>
+        `;
+    }
+
+    renderUniversitySection(uniData) {
+        const highlightsList = uniData.highlights ? uniData.highlights.map(highlight => 
+            `<li>${highlight}</li>`
+        ).join('') : '';
+
+        return `
+            <div class="academic-section">
+                <h3>University</h3>
+                <div class="academic-info">
+                    <div class="academic-meta">
+                        <span class="academic-year">${uniData.name}</span>
+                        <span class="academic-school">${uniData.degree}</span>
+                    </div>
+                    <div style="margin: 1rem 0;">
+                        <p><strong>Current GPA:</strong> ${uniData.current_gpa}</p>
+                        <p><strong>Credits Completed:</strong> ${uniData.credits_completed}</p>
+                        <p><strong>Expected Graduation:</strong> ${uniData.expected_graduation}</p>
+                    </div>
+                    ${highlightsList ? `
+                        <div>
+                            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Key Highlights</h4>
+                            <ul class="university-highlights">
+                                ${highlightsList}
+                            </ul>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+    }
+
+    renderFilterButtons() {
+        const container = document.getElementById('filter-buttons');
+        if (!container) return;
+
+        // Extract unique tags from projects
+        const allTags = new Set();
+        this.projects.forEach(project => {
+            if (project.tags && Array.isArray(project.tags)) {
+                project.tags.forEach(tag => allTags.add(tag));
+            }
+        });
+
+        const tags = ['all', ...Array.from(allTags).sort()];
+        
+        container.innerHTML = tags.map(tag => `
+            <button class="filter-btn ${tag === this.activeFilter ? 'active' : ''}" 
+                    data-filter="${tag}">
+                ${tag.charAt(0).toUpperCase() + tag.slice(1)}
+            </button>
+        `).join('');
+
+        // Add click listeners
+        container.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                this.activeFilter = e.target.dataset.filter;
+                this.updateFilterButtons();
+                this.filterAndRenderProjects();
+            });
         });
     }
 
-    renderFilterTags() {
-        const filterTagsContainer = document.getElementById('filterTags');
-        if (!filterTagsContainer) return;
-
-        filterTagsContainer.innerHTML = '';
-        
-        Array.from(this.availableTags).sort().forEach(tag => {
-            const tagButton = document.createElement('button');
-            tagButton.className = `filter-tag ${this.activeTags.has(tag) ? 'active' : ''}`;
-            tagButton.textContent = tag;
-            tagButton.addEventListener('click', () => this.toggleTag(tag));
-            filterTagsContainer.appendChild(tagButton);
+    updateFilterButtons() {
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filter === this.activeFilter);
         });
+    }
+
+    filterAndRenderProjects() {
+        this.filteredProjects = this.projects.filter(project => {
+            // Filter by active filter
+            const matchesFilter = this.activeFilter === 'all' || 
+                (project.tags && project.tags.includes(this.activeFilter));
+
+            // Filter by search term
+            const matchesSearch = !this.searchTerm || 
+                project.name.toLowerCase().includes(this.searchTerm) ||
+                project.summary.toLowerCase().includes(this.searchTerm) ||
+                (project.tech && project.tech.some(tech => 
+                    tech.toLowerCase().includes(this.searchTerm)));
+
+            return matchesFilter && matchesSearch;
+        });
+
+        this.renderProjects();
     }
 
     renderProjects() {
-        const projectsGrid = document.getElementById('projectsGrid');
-        if (!projectsGrid) return;
+        const container = document.getElementById('projects-grid');
+        if (!container) return;
 
         if (this.filteredProjects.length === 0) {
-            projectsGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: var(--color-text-secondary);">
+            container.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-dim);">
                     <h3>No projects found</h3>
                     <p>Try adjusting your search terms or filters.</p>
                 </div>
@@ -210,12 +335,15 @@ class PortfolioApp {
             return;
         }
 
-        projectsGrid.innerHTML = this.filteredProjects.map(project => this.createProjectCard(project)).join('');
+        container.innerHTML = this.filteredProjects.map(project => this.createProjectCard(project)).join('');
         
-        // Add click listeners to project cards
-        projectsGrid.querySelectorAll('.project-card').forEach((card, index) => {
+        // Add click listeners
+        container.querySelectorAll('.project-card').forEach((card, index) => {
             card.addEventListener('click', () => this.openProjectModal(this.filteredProjects[index]));
         });
+
+        // Setup animations for new cards
+        this.setupCardAnimations();
     }
 
     createProjectCard(project) {
@@ -223,129 +351,94 @@ class PortfolioApp {
             `<span class="tech-tag">${tech}</span>`
         ).join('') : '';
 
-        const projectTags = project.tags ? project.tags.map(tag => 
-            `<span class="project-tag">${tag}</span>`
-        ).join('') : '';
-
         return `
             <div class="project-card" data-project="${project.slug}">
-                <h4 class="project-title">${project.name}</h4>
-                <p class="project-description">${project.description}</p>
-                ${techTags ? `<div class="project-tech">${techTags}</div>` : ''}
-                ${projectTags ? `<div class="project-tags">${projectTags}</div>` : ''}
+                <h3 class="project-title">${project.name}</h3>
+                <p class="project-summary">${project.summary}</p>
+                ${techTags ? `<div class="tech-stack">${techTags}</div>` : ''}
+                <div class="project-actions">
+                    <a href="${project.repo}" target="_blank" rel="noopener" class="btn btn-small btn-outline" onclick="event.stopPropagation()">
+                        Repository
+                    </a>
+                    <button class="btn btn-small btn-primary">Details</button>
+                </div>
             </div>
         `;
     }
 
     openProjectModal(project) {
-        const modal = document.getElementById('projectModal');
-        const modalBody = document.getElementById('modalBody');
-        
-        if (!modal || !modalBody) return;
+        if (!this.modal) return;
 
-        const techList = project.tech ? project.tech.map(tech => `<li>${tech}</li>`).join('') : '';
-        const tagList = project.tags ? project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('') : '';
-        
-        modalBody.innerHTML = `
-            <h2>${project.name}</h2>
-            <p class="modal-description">${project.description}</p>
-            
-            ${project.longDescription ? `<div class="modal-long-description">${project.longDescription}</div>` : ''}
-            
-            ${project.tech ? `
-                <div class="modal-section">
-                    <h3>Technologies Used</h3>
-                    <ul class="tech-list">${techList}</ul>
-                </div>
-            ` : ''}
-            
-            ${project.features ? `
-                <div class="modal-section">
-                    <h3>Key Features</h3>
-                    <ul class="feature-list">
-                        ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                    </ul>
-                </div>
-            ` : ''}
-            
-            ${project.tags ? `
-                <div class="modal-section">
-                    <h3>Tags</h3>
-                    <div class="project-tags">${tagList}</div>
-                </div>
-            ` : ''}
-            
-            <div class="modal-actions">
-                ${project.repo ? `<a href="${project.repo}" target="_blank" class="btn btn-primary">View Code</a>` : ''}
-                ${project.demo ? `<a href="${project.demo}" target="_blank" class="btn btn-secondary">Live Demo</a>` : ''}
-            </div>
-        `;
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
 
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        if (modalTitle) {
+            modalTitle.textContent = project.name;
+        }
+
+        if (modalBody) {
+            const techList = project.tech ? project.tech.map(tech => 
+                `<span class="tech-tag">${tech}</span>`
+            ).join('') : '';
+
+            modalBody.innerHTML = `
+                <div class="modal-description">
+                    <p><strong>Summary:</strong> ${project.summary}</p>
+                    <p><strong>Description:</strong> ${project.description}</p>
+                </div>
+                
+                ${project.tech ? `
+                    <div class="modal-tech">
+                        <h4>Technologies Used</h4>
+                        <div class="tech-stack">${techList}</div>
+                    </div>
+                ` : ''}
+                
+                <div class="modal-actions">
+                    <a href="${project.repo}" target="_blank" rel="noopener" class="btn btn-primary">
+                        View Repository
+                    </a>
+                </div>
+            `;
+        }
+
+        this.modal.showModal();
     }
 
     closeModal() {
-        const modal = document.getElementById('projectModal');
-        if (modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
+        if (this.modal && this.modal.open) {
+            this.modal.close();
         }
     }
 
-    formatNumber(num) {
-        if (num >= 1000000) {
-            return (num / 1000000).toFixed(1) + 'M';
-        } else if (num >= 1000) {
-            return (num / 1000).toFixed(1) + 'K';
+    setupAnimations() {
+        // Setup intersection observer for card animations
+        if ('IntersectionObserver' in window && 
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            
+            this.observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        this.observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px'
+            });
         }
-        return num.toString();
+
+        this.setupCardAnimations();
     }
 
-    getFallbackProjects() {
-        return [
-            {
-                name: "Embedded System Monitor",
-                slug: "embedded-monitor",
-                description: "Real-time monitoring system for embedded devices with custom hardware interface.",
-                longDescription: "A comprehensive monitoring solution designed for embedded systems, featuring real-time data collection, custom hardware interfaces, and low-level system optimization.",
-                tech: ["C", "ARM Cortex-M", "FreeRTOS", "I2C", "SPI"],
-                tags: ["embedded", "hardware", "real-time"],
-                features: [
-                    "Real-time sensor data collection",
-                    "Custom PCB design integration",
-                    "Low power consumption optimization",
-                    "Wireless data transmission"
-                ],
-                repo: "https://github.com/ravindu439/embedded-monitor",
-                demo: null
-            },
-            {
-                name: "RISC-V Processor Design",
-                slug: "riscv-processor",
-                description: "Custom RISC-V processor implementation with pipeline optimization and cache design.",
-                longDescription: "A complete RISC-V processor implementation focusing on performance optimization through advanced pipelining techniques and efficient cache hierarchy design.",
-                tech: ["Verilog", "RISC-V ISA", "SystemVerilog", "ModelSim"],
-                tags: ["computer-architecture", "processor", "verilog"],
-                features: [
-                    "5-stage pipeline implementation",
-                    "Branch prediction optimization",
-                    "L1/L2 cache hierarchy",
-                    "Performance analysis tools"
-                ],
-                repo: "https://github.com/ravindu439/riscv-processor",
-                demo: null
-            }
-        ];
-    }
+    setupCardAnimations() {
+        if (!this.observer) return;
 
-    getFallbackMetrics() {
-        return {
-            repositories: 25,
-            stars: 150,
-            followers: 45,
-            commits: 1200
-        };
+        // Observe all project cards
+        document.querySelectorAll('.project-card:not(.fade-in)').forEach(card => {
+            this.observer.observe(card);
+        });
     }
 }
 
@@ -354,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.portfolioApp = new PortfolioApp();
 });
 
-// Export for module use
+// Export for module use if needed
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = PortfolioApp;
 }

@@ -1,138 +1,29 @@
 [
   {
-    "name": "ARM Cortex-M4 Real-Time OS",
-    "slug": "arm-rtos",
-    "description": "Custom real-time operating system designed for ARM Cortex-M4 microcontrollers with priority-based scheduling.",
-    "longDescription": "A lightweight, deterministic real-time operating system built from scratch for ARM Cortex-M4 processors. Features include preemptive multitasking, inter-task communication, memory management, and low-latency interrupt handling optimized for embedded applications.",
-    "tech": ["C", "ARM Assembly", "ARM Cortex-M4", "GCC", "OpenOCD"],
-    "tags": ["embedded", "rtos", "arm", "microcontroller"],
-    "features": [
-      "Preemptive priority-based scheduler",
-      "Inter-task communication primitives",
-      "Memory pool management",
-      "Hardware abstraction layer",
-      "Sub-microsecond interrupt latency"
-    ],
-    "repo": "https://github.com/ravindu439/arm-rtos",
-    "demo": null
+    "name": "Safe Plus – Smart Safety Helmet",
+    "slug": "safe-plus",
+    "summary": "Real-time monitoring, impact detection & emergency alerts to enhance industrial worker safety.",
+    "description": "Integrates multi-sensor fusion, threshold logic, and wireless telemetry to reduce accident response latency in hazardous environments.",
+    "tech": ["Embedded", "Sensors", "Edge", "Wireless"],
+    "repo": "https://github.com/cepdnaclk/e20-3yp-SafePlus",
+    "tags": ["embedded", "safety", "hardware"]
   },
   {
-    "name": "RISC-V Pipelined Processor",
-    "slug": "riscv-pipeline",
-    "description": "5-stage pipelined RISC-V processor implementation with hazard detection and branch prediction.",
-    "longDescription": "Complete implementation of a 5-stage pipelined RISC-V processor supporting RV32I instruction set. Includes advanced features like data forwarding, hazard detection units, branch prediction, and cache memory subsystem for enhanced performance.",
-    "tech": ["Verilog", "SystemVerilog", "RISC-V ISA", "ModelSim", "Quartus"],
-    "tags": ["computer-architecture", "processor", "verilog", "risc-v"],
-    "features": [
-      "5-stage pipeline (IF, ID, EX, MEM, WB)",
-      "Data forwarding and hazard detection",
-      "2-bit branch predictor",
-      "Direct-mapped cache implementation",
-      "Performance benchmarking suite"
-    ],
-    "repo": "https://github.com/ravindu439/riscv-pipeline",
-    "demo": null
+    "name": "Denture Design Studio",
+    "slug": "denture-design-studio",
+    "summary": "Interactive dental education & self-assessment platform.",
+    "description": "Guided clinical case workflows, model answer comparison, and resource library for procedural skill development.",
+    "tech": ["Web", "Education"],
+    "repo": "https://github.com/cepdnaclk/e20-co227-Denture-Design-Studio",
+    "tags": ["web", "education"]
   },
   {
-    "name": "IoT Sensor Network Platform",
-    "slug": "iot-sensor-network",
-    "description": "Distributed sensor network system with mesh topology for industrial monitoring applications.",
-    "longDescription": "Scalable IoT platform for industrial sensor networks featuring mesh networking, edge computing capabilities, and real-time data analytics. Designed for harsh industrial environments with fault tolerance and self-healing network topology.",
-    "tech": ["ESP32", "LoRaWAN", "MQTT", "FreeRTOS", "Node.js", "MongoDB"],
-    "tags": ["iot", "networking", "sensors", "embedded"],
-    "features": [
-      "Self-organizing mesh network",
-      "Edge computing and data preprocessing",
-      "Fault-tolerant communication protocol",
-      "Real-time dashboard and analytics",
-      "Low power consumption design"
-    ],
-    "repo": "https://github.com/ravindu439/iot-sensor-network",
-    "demo": "https://iot-dashboard.ravindu.dev"
-  },
-  {
-    "name": "FPGA-based Signal Processor",
-    "slug": "fpga-signal-processor",
-    "description": "High-performance digital signal processing unit implemented on FPGA for real-time audio applications.",
-    "longDescription": "FPGA-based digital signal processing system optimized for real-time audio processing. Implements various DSP algorithms including FFT, FIR/IIR filters, and adaptive algorithms with hardware-accelerated parallel processing capabilities.",
-    "tech": ["VHDL", "Xilinx Vivado", "FPGA", "DSP", "AXI4"],
-    "tags": ["fpga", "dsp", "audio", "hardware"],
-    "features": [
-      "Parallel FFT implementation",
-      "Configurable FIR/IIR filters",
-      "Real-time audio processing",
-      "AXI4 interface for communication",
-      "Resource optimization techniques"
-    ],
-    "repo": "https://github.com/ravindu439/fpga-signal-processor",
-    "demo": null
-  },
-  {
-    "name": "Embedded Machine Learning Engine",
-    "slug": "embedded-ml-engine",
-    "description": "Lightweight machine learning inference engine for resource-constrained embedded systems.",
-    "longDescription": "Optimized ML inference engine designed for microcontrollers with limited memory and processing power. Supports neural network quantization, model compression, and efficient inference algorithms for edge AI applications.",
-    "tech": ["C", "TensorFlow Lite", "ARM CMSIS-NN", "STM32", "Python"],
-    "tags": ["machine-learning", "embedded", "ai", "optimization"],
-    "features": [
-      "8-bit quantized neural networks",
-      "Model compression algorithms",
-      "Memory-efficient inference",
-      "Real-time classification",
-      "Power consumption optimization"
-    ],
-    "repo": "https://github.com/ravindu439/embedded-ml-engine",
-    "demo": null
-  },
-  {
-    "name": "USB Protocol Analyzer",
-    "slug": "usb-protocol-analyzer",
-    "description": "Hardware-based USB protocol analyzer for debugging and reverse engineering USB communications.",
-    "longDescription": "Custom USB protocol analyzer built with FPGA and high-speed ADCs for capturing and analyzing USB traffic. Provides real-time packet decoding, protocol violation detection, and timing analysis for USB development and debugging.",
-    "tech": ["FPGA", "Verilog", "USB Protocol", "High-Speed ADC", "Qt"],
-    "tags": ["hardware", "usb", "protocol", "debugging"],
-    "features": [
-      "Real-time USB packet capture",
-      "Protocol decoding and analysis",
-      "Timing violation detection",
-      "Graphical waveform viewer",
-      "Export capabilities for further analysis"
-    ],
-    "repo": "https://github.com/ravindu439/usb-protocol-analyzer",
-    "demo": null
-  },
-  {
-    "name": "Motor Control System",
-    "slug": "motor-control-system",
-    "description": "Advanced motor control system with field-oriented control for high-efficiency electric motor drives.",
-    "longDescription": "Sophisticated motor control system implementing field-oriented control (FOC) algorithms for three-phase permanent magnet synchronous motors. Features sensorless operation, adaptive control, and high-frequency PWM generation for industrial applications.",
-    "tech": ["C", "DSP", "PWM", "ADC", "Control Theory"],
-    "tags": ["motor-control", "embedded", "control-systems", "power-electronics"],
-    "features": [
-      "Field-oriented control implementation",
-      "Sensorless rotor position estimation",
-      "Adaptive speed and torque control",
-      "Protection algorithms",
-      "Real-time performance monitoring"
-    ],
-    "repo": "https://github.com/ravindu439/motor-control-system",
-    "demo": null
-  },
-  {
-    "name": "Cache Memory Simulator",
-    "slug": "cache-simulator",
-    "description": "Comprehensive cache memory simulator for analyzing cache performance and optimization strategies.",
-    "longDescription": "Educational and research tool for cache memory analysis supporting various cache architectures including direct-mapped, set-associative, and fully associative caches. Includes replacement policies, write strategies, and performance metrics visualization.",
-    "tech": ["C++", "Python", "Matplotlib", "Cache Architecture"],
-    "tags": ["computer-architecture", "cache", "simulation", "performance"],
-    "features": [
-      "Multiple cache architectures support",
-      "Various replacement policies (LRU, FIFO, Random)",
-      "Write-through and write-back strategies",
-      "Performance metrics and visualization",
-      "Trace file analysis capabilities"
-    ],
-    "repo": "https://github.com/ravindu439/cache-simulator",
-    "demo": "https://cache-sim.ravindu.dev"
+    "name": "RV32IM Pipeline (Group 2)",
+    "slug": "rv32im-pipeline",
+    "summary": "5-stage RISC-V pipeline implementation with verification harness.",
+    "description": "Implements IF, ID, EX, MEM, WB stages, hazard handling, and testbenches to validate functional correctness of an RV32IM core.",
+    "tech": ["Verilog", "RISC-V", "Architecture"],
+    "repo": "https://github.com/cepdnaclk/e20-co502-RV32IM-pipeline-implementation-group-2",
+    "tags": ["architecture", "verilog", "hardware"]
   }
 ]

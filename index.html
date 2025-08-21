@@ -3,105 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ravindu | Computer Engineer</title>
-    <meta name="description" content="Computer Engineer passionate about computer architecture and embedded systems">
-    <link rel="stylesheet" href="styles.css">
+    <title>Ravindu Lakshan - Embedded Systems & Computer Architecture</title>
+    <meta name="description" content="4th-year Computer Engineering student at University of Peradeniya specializing in embedded systems, RISC-V pipelines, and safety solutions.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ravindu439.github.io/">
+    <meta property="og:title" content="Ravindu Lakshan - Embedded Systems & Computer Architecture">
+    <meta property="og:description" content="4th-year Computer Engineering student specializing in embedded systems, RISC-V pipelines, and safety solutions.">
+    <meta property="og:image" content="https://ravindu439.github.io/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ravindu439.github.io/">
+    <meta property="twitter:title" content="Ravindu Lakshan - Embedded Systems & Computer Architecture">
+    <meta property="twitter:description" content="4th-year Computer Engineering student specializing in embedded systems, RISC-V pipelines, and safety solutions.">
+    <meta property="twitter:image" content="https://ravindu439.github.io/assets/og-image.jpg">
+
+    <!-- Favicon placeholder -->
+    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+    
+    <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #1e293b;
+            --text-dim: #64748b;
+            --accent: #3b82f6;
+            --radius: 0.5rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+        }
+    </style>
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-brand">
-                <h1>Ravindu</h1>
-                <span class="subtitle">Computer Engineer</span>
-            </div>
-            <div class="nav-controls">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <span class="theme-icon">🌙</span>
-                </button>
+    <header>
+        <nav role="navigation" class="nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="nav-brand">
+                        <a href="#hero" class="brand-link">Ravindu Lakshan</a>
+                    </div>
+                    <div class="nav-menu">
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#academics" class="nav-link">Academics</a>
+                        <a href="#projects" class="nav-link">Projects</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                            <span class="theme-icon">🌙</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2 class="hero-title">Passionate about Computer Architecture & Embedded Systems</h2>
-                <p class="hero-description">
-                    Building the future through innovative hardware-software integration and system-level optimization.
-                </p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#metrics" class="btn btn-secondary">GitHub Stats</a>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-name">Ravindu Lakshan</span>
+                        <span class="hero-tagline">Embedded Systems & Computer Architecture Enthusiast</span>
+                    </h1>
+                    <div class="hero-actions">
+                        <a href="#academics" class="btn btn-primary">View Academics</a>
+                        <a href="#projects" class="btn btn-secondary">View Projects</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Metrics Panel -->
-    <section id="metrics" class="metrics">
-        <div class="container">
-            <h3>GitHub Metrics</h3>
-            <div class="metrics-grid" id="metricsGrid">
-                <div class="metric-card loading">
-                    <div class="metric-value">--</div>
-                    <div class="metric-label">Repositories</div>
-                </div>
-                <div class="metric-card loading">
-                    <div class="metric-value">--</div>
-                    <div class="metric-label">Stars</div>
-                </div>
-                <div class="metric-card loading">
-                    <div class="metric-value">--</div>
-                    <div class="metric-label">Followers</div>
-                </div>
-                <div class="metric-card loading">
-                    <div class="metric-value">--</div>
-                    <div class="metric-label">Commits</div>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I'm a 4th-year Computer Engineering student at the University of Peradeniya, passionate about the intersection of hardware and software. My academic journey has focused on embedded systems design, computer architecture, and developing innovative safety solutions for real-world applications.</p>
+                        
+                        <p>My interests lie in RISC-V pipeline implementations, embedded system optimization, and creating intelligent safety systems that can make a meaningful impact. I enjoy working on projects that challenge conventional approaches and push the boundaries of what's possible with resource-constrained systems.</p>
+                        
+                        <a href="./Ravindu-Lakshan-CV.pdf" class="btn btn-outline" target="_blank" rel="noopener">
+                            Download CV
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h3>Projects</h3>
+        <!-- Academics Section -->
+        <section id="academics" class="academics">
+            <div class="container">
+                <h2 class="section-title">Academic Profile</h2>
+                <div id="academics-content" class="academics-content">
+                    <div class="loading-placeholder">Loading academic information...</div>
+                </div>
+                <small class="disclaimer">(Replace placeholder exam data with real results.)</small>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
                 <div class="projects-controls">
-                    <input type="text" id="searchInput" placeholder="Search projects..." class="search-input">
-                    <div class="filter-tags" id="filterTags"></div>
+                    <input type="text" id="search-input" placeholder="Search projects..." class="search-input">
+                    <div id="filter-buttons" class="filter-buttons">
+                        <!-- Filter buttons will be generated dynamically -->
+                    </div>
+                </div>
+                <div id="projects-grid" class="projects-grid">
+                    <!-- Projects will be loaded dynamically -->
+                    <noscript>
+                        <div class="project-card">
+                            <h3>Safe Plus – Smart Safety Helmet</h3>
+                            <p>Real-time monitoring, impact detection & emergency alerts to enhance industrial worker safety.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Embedded</span>
+                                <span class="tech-tag">Sensors</span>
+                                <span class="tech-tag">Edge</span>
+                                <span class="tech-tag">Wireless</span>
+                            </div>
+                            <a href="https://github.com/cepdnaclk/e20-3yp-SafePlus" class="btn btn-small">View Repository</a>
+                        </div>
+                    </noscript>
                 </div>
             </div>
-            <div class="projects-grid" id="projectsGrid">
-                <!-- Projects will be loaded dynamically -->
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <p>I'm always interested in discussing embedded systems, computer architecture, and innovative engineering solutions. Feel free to reach out!</p>
+                    <div class="contact-links">
+                        <a href="mailto:e20439@eng.pdn.ac.lk" class="contact-link">
+                            <span class="contact-icon">📧</span>
+                            e20439@eng.pdn.ac.lk
+                        </a>
+                        <a href="https://github.com/ravindu439" class="contact-link" target="_blank" rel="noopener">
+                            <span class="contact-icon">🔗</span>
+                            GitHub Profile
+                        </a>
+                        <a href="https://linkedin.com/in/ravindu-lakshan" class="contact-link" target="_blank" rel="noopener">
+                            <span class="contact-icon">💼</span>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Project Modal -->
-    <div class="modal" id="projectModal">
-        <div class="modal-overlay" id="modalOverlay"></div>
+    <dialog id="project-modal" class="modal" aria-modal="true">
         <div class="modal-content">
-            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
-            <div class="modal-body" id="modalBody">
+            <header class="modal-header">
+                <h3 id="modal-title" class="modal-title">Project Title</h3>
+                <button id="modal-close" class="modal-close" aria-label="Close modal">&times;</button>
+            </header>
+            <div id="modal-body" class="modal-body">
                 <!-- Project details will be loaded here -->
             </div>
         </div>
-    </div>
+    </dialog>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Ravindu. Built with passion for embedded systems and computer architecture.</p>
+            <p>&copy; <span id="year"></span> Ravindu Lakshan • Built with HTML/CSS/JS</p>
         </div>
     </footer>
 
-    <script src="scripts/theme.js"></script>
-    <script src="scripts/app.js"></script>
+    <script src="scripts/theme.js" defer></script>
+    <script src="scripts/app.js" defer></script>
 </body>
 </html>

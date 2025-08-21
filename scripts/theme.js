@@ -1,60 +1,74 @@
 // Theme Management System
 class ThemeManager {
     constructor() {
-        this.themes = ['light', 'dark', 'auto'];
-        this.currentTheme = this.getStoredTheme() || 'auto';
+        this.themes = ['auto', 'dark', 'light'];
+        this.currentThemeIndex = 0;
+        this.storageKey = 'themeChoice';
         this.init();
     }
 
     init() {
+        this.loadStoredTheme();
         this.setupEventListeners();
-        this.applyTheme(this.currentTheme);
+        this.applyTheme();
         this.updateThemeIcon();
     }
 
+    loadStoredTheme() {
+        try {
+            const stored = localStorage.getItem(this.storageKey);
+            if (stored && this.themes.includes(stored)) {
+                this.currentThemeIndex = this.themes.indexOf(stored);
+            }
+        } catch (e) {
+            console.warn('Could not access localStorage for theme:', e);
+        }
+    }
+
+    getCurrentTheme() {
+        return this.themes[this.currentThemeIndex];
+    }
+
     setupEventListeners() {
-        const themeToggle = document.getElementById('themeToggle');
+        const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', () => this.cycleTheme());
         }
 
-        // Listen for system theme changes
+        // Listen for system theme changes when in auto mode
         if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-                if (this.currentTheme === 'auto') {
-                    this.applySystemTheme();
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            mediaQuery.addEventListener('change', () => {
+                if (this.getCurrentTheme() === 'auto') {
+                    this.applyTheme();
                 }
             });
         }
     }
 
     cycleTheme() {
-        const currentIndex = this.themes.indexOf(this.currentTheme);
-        const nextIndex = (currentIndex + 1) % this.themes.length;
-        this.currentTheme = this.themes[nextIndex];
-        
-        this.applyTheme(this.currentTheme);
-        this.storeTheme(this.currentTheme);
+        this.currentThemeIndex = (this.currentThemeIndex + 1) % this.themes.length;
+        this.storeTheme();
+        this.applyTheme();
         this.updateThemeIcon();
     }
 
-    applyTheme(theme) {
+    applyTheme() {
         const html = document.documentElement;
+        const currentTheme = this.getCurrentTheme();
         
-        // Remove existing theme attributes
-        html.removeAttribute('data-theme');
+        // Remove existing theme classes
+        html.classList.remove('light', 'dark');
         
-        if (theme === 'auto') {
-            this.applySystemTheme();
+        if (currentTheme === 'auto') {
+            // Use system preference
+            const prefersDark = window.matchMedia && 
+                               window.matchMedia('(prefers-color-scheme: dark)').matches;
+            html.classList.add(prefersDark ? 'dark' : 'light');
         } else {
-            html.setAttribute('data-theme', theme);
+            // Use selected theme
+            html.classList.add(currentTheme);
         }
-    }
-
-    applySystemTheme() {
-        const html = document.documentElement;
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
     }
 
     updateThemeIcon() {
@@ -62,43 +76,39 @@ class ThemeManager {
         if (!themeIcon) return;
 
         const icons = {
-            light: '☀️',
+            auto: '🌓',
             dark: '🌙',
-            auto: '🌓'
+            light: '☀️'
         };
 
-        themeIcon.textContent = icons[this.currentTheme] || icons.auto;
+        const currentTheme = this.getCurrentTheme();
+        themeIcon.textContent = icons[currentTheme] || icons.auto;
         
         // Update aria-label
-        const themeToggle = document.getElementById('themeToggle');
+        const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
-            themeToggle.setAttribute('aria-label', `Current theme: ${this.currentTheme}. Click to change.`);
+            const nextTheme = this.themes[(this.currentThemeIndex + 1) % this.themes.length];
+            themeToggle.setAttribute('aria-label', 
+                `Current theme: ${currentTheme}. Click to switch to ${nextTheme}.`);
         }
     }
 
-    getStoredTheme() {
+    storeTheme() {
         try {
-            return localStorage.getItem('portfolio-theme');
-        } catch (e) {
-            console.warn('Could not access localStorage for theme:', e);
-            return null;
-        }
-    }
-
-    storeTheme(theme) {
-        try {
-            localStorage.setItem('portfolio-theme', theme);
+            localStorage.setItem(this.storageKey, this.getCurrentTheme());
         } catch (e) {
             console.warn('Could not store theme in localStorage:', e);
         }
     }
 
-    // Public method to get current effective theme
+    // Public method to get effective theme (resolves 'auto' to actual theme)
     getEffectiveTheme() {
-        if (this.currentTheme === 'auto') {
-            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const currentTheme = this.getCurrentTheme();
+        if (currentTheme === 'auto') {
+            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches 
+                ? 'dark' : 'light';
         }
-        return this.currentTheme;
+        return currentTheme;
     }
 }
 
@@ -107,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.themeManager = new ThemeManager();
 });
 
-// Export for module use
+// Export for module use if needed
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = ThemeManager;
 }
