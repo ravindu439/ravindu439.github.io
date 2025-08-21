@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravindu | Computer Engineer</title>
+    <meta name="description" content="Computer Engineer passionate about computer architecture and embedded systems">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>Ravindu</h1>
+                <span class="subtitle">Computer Engineer</span>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Passionate about Computer Architecture & Embedded Systems</h2>
+                <p class="hero-description">
+                    Building the future through innovative hardware-software integration and system-level optimization.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#metrics" class="btn btn-secondary">GitHub Stats</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Panel -->
+    <section id="metrics" class="metrics">
+        <div class="container">
+            <h3>GitHub Metrics</h3>
+            <div class="metrics-grid" id="metricsGrid">
+                <div class="metric-card loading">
+                    <div class="metric-value">--</div>
+                    <div class="metric-label">Repositories</div>
+                </div>
+                <div class="metric-card loading">
+                    <div class="metric-value">--</div>
+                    <div class="metric-label">Stars</div>
+                </div>
+                <div class="metric-card loading">
+                    <div class="metric-value">--</div>
+                    <div class="metric-label">Followers</div>
+                </div>
+                <div class="metric-card loading">
+                    <div class="metric-value">--</div>
+                    <div class="metric-label">Commits</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h3>Projects</h3>
+                <div class="projects-controls">
+                    <input type="text" id="searchInput" placeholder="Search projects..." class="search-input">
+                    <div class="filter-tags" id="filterTags"></div>
+                </div>
+            </div>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Project details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ravindu. Built with passion for embedded systems and computer architecture.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/theme.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
