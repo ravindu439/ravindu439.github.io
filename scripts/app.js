@@ -13,10 +13,15 @@ class PortfolioApp {
     }
 
     async init() {
+        console.log('Portfolio app initializing...');
         this.setupBasicFunctionality();
+        console.log('Basic functionality setup complete');
         await this.loadData();
+        console.log('Data loading complete');
         this.render();
+        console.log('Initial render complete');
         this.setupAnimations();
+        console.log('Portfolio app initialization complete');
     }
 
     setupBasicFunctionality() {
@@ -102,12 +107,43 @@ class PortfolioApp {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            this.projects = await response.json();
+            const text = await response.text();
+            this.projects = JSON.parse(text);
             this.filteredProjects = [...this.projects];
+            console.log('Projects loaded successfully:', this.projects.length);
         } catch (error) {
             console.error('Error loading projects:', error);
-            this.projects = [];
-            this.filteredProjects = [];
+            // Fallback projects for development/testing
+            this.projects = [
+                {
+                    "name": "Safe Plus – Smart Safety Helmet",
+                    "slug": "safe-plus",
+                    "summary": "Real-time monitoring, impact detection & emergency alerts to enhance industrial worker safety.",
+                    "description": "Integrates multi-sensor fusion, threshold logic, and wireless telemetry to reduce accident response latency in hazardous environments.",
+                    "tech": ["Embedded", "Sensors", "Edge", "Wireless"],
+                    "repo": "https://github.com/cepdnaclk/e20-3yp-SafePlus",
+                    "tags": ["embedded", "safety", "hardware"]
+                },
+                {
+                    "name": "Denture Design Studio",
+                    "slug": "denture-design-studio", 
+                    "summary": "Interactive dental education & self-assessment platform.",
+                    "description": "Guided clinical case workflows, model answer comparison, and resource library for procedural skill development.",
+                    "tech": ["Web", "Education"],
+                    "repo": "https://github.com/cepdnaclk/e20-co227-Denture-Design-Studio",
+                    "tags": ["web", "education"]
+                },
+                {
+                    "name": "RV32IM Pipeline (Group 2)",
+                    "slug": "rv32im-pipeline",
+                    "summary": "5-stage RISC-V pipeline implementation with verification harness.",
+                    "description": "Implements IF, ID, EX, MEM, WB stages, hazard handling, and testbenches to validate functional correctness of an RV32IM core.",
+                    "tech": ["Verilog", "RISC-V", "Architecture"],
+                    "repo": "https://github.com/cepdnaclk/e20-co502-RV32IM-pipeline-implementation-group-2",
+                    "tags": ["architecture", "verilog", "hardware"]
+                }
+            ];
+            this.filteredProjects = [...this.projects];
         }
     }
 
@@ -117,10 +153,53 @@ class PortfolioApp {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            this.academics = await response.json();
+            const text = await response.text();
+            this.academics = JSON.parse(text);
+            console.log('Academics loaded successfully:', this.academics);
         } catch (error) {
             console.error('Error loading academics:', error);
-            this.academics = null;
+            // Fallback academics data
+            this.academics = {
+                "ol_exam": {
+                    "year": "2018",
+                    "school": "Your School Name",
+                    "results": [
+                        { "subject": "Mathematics", "grade": "A" },
+                        { "subject": "Science", "grade": "A" },
+                        { "subject": "English", "grade": "A" },
+                        { "subject": "Sinhala", "grade": "A" },
+                        { "subject": "History", "grade": "A" },
+                        { "subject": "Buddhism", "grade": "A" },
+                        { "subject": "Art", "grade": "B" },
+                        { "subject": "Tamil", "grade": "B" },
+                        { "subject": "ICT", "grade": "A" }
+                    ]
+                },
+                "al_exam": {
+                    "year": "2020",
+                    "stream": "Physical Science",
+                    "results": [
+                        { "subject": "Combined Mathematics", "grade": "A" },
+                        { "subject": "Physics", "grade": "A" },
+                        { "subject": "Chemistry", "grade": "A" }
+                    ],
+                    "z_score": "Z.SCORE-PLACEHOLDER",
+                    "district_rank": "DISTRICT-RANK-PLACEHOLDER", 
+                    "island_rank": "ISLAND-RANK-PLACEHOLDER"
+                },
+                "university": {
+                    "name": "University of Peradeniya",
+                    "degree": "BSc (Hons) in Computer Engineering",
+                    "current_gpa": "X.XX / 4.00",
+                    "credits_completed": "NNN",
+                    "expected_graduation": "2025",
+                    "highlights": [
+                        "Focus on embedded systems & computer architecture",
+                        "RISC-V pipeline / Verilog design experience",
+                        "Safety-oriented hardware/software co-design"
+                    ]
+                }
+            };
         }
     }
 
@@ -132,13 +211,18 @@ class PortfolioApp {
 
     renderAcademics() {
         const container = document.getElementById('academics-content');
-        if (!container || !this.academics) {
-            if (container) {
-                container.innerHTML = '<div class="loading-placeholder">Failed to load academic information.</div>';
-            }
+        if (!container) {
+            console.error('Academics container not found');
             return;
         }
 
+        if (!this.academics) {
+            console.error('No academics data available');
+            container.innerHTML = '<div class="loading-placeholder">Failed to load academic information. Please check console for errors.</div>';
+            return;
+        }
+
+        console.log('Rendering academics:', this.academics);
         let html = '';
 
         // Ordinary Level
@@ -157,6 +241,7 @@ class PortfolioApp {
         }
 
         container.innerHTML = html;
+        console.log('Academics rendered successfully');
     }
 
     renderOLSection(olData) {
@@ -323,7 +408,12 @@ class PortfolioApp {
 
     renderProjects() {
         const container = document.getElementById('projects-grid');
-        if (!container) return;
+        if (!container) {
+            console.error('Projects container not found');
+            return;
+        }
+
+        console.log('Rendering projects:', this.filteredProjects.length);
 
         if (this.filteredProjects.length === 0) {
             container.innerHTML = `
@@ -344,6 +434,7 @@ class PortfolioApp {
 
         // Setup animations for new cards
         this.setupCardAnimations();
+        console.log('Projects rendered successfully');
     }
 
     createProjectCard(project) {
