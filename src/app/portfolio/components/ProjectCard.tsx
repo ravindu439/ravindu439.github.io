@@ -11,14 +11,14 @@ interface ProjectCardProps {
     category: string;
     description: string;
     image: string;
-    alt: string;
+    alt?: string;
     technologies: string[];
-    liveDemo?: string;
+    website?: string;
     github?: string;
-    metrics: {
-      label: string;
-      value: string;
-    }[];
+    liveDemo?: string;
+    type: string;
+    status: string;
+    timeline: string;
   };
   onViewDetails: (id: number) => void;
 }
@@ -29,7 +29,7 @@ const ProjectCard = ({ project, onViewDetails }: ProjectCardProps) => {
       <div className="relative h-48 overflow-hidden">
         <AppImage
           src={project.image}
-          alt={project.alt}
+          alt={project.alt || project.title}
           className="w-full h-full object-cover transition-smooth group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent opacity-0 group-hover:opacity-100 transition-smooth flex items-end p-4">
@@ -98,12 +98,14 @@ const ProjectCard = ({ project, onViewDetails }: ProjectCardProps) => {
         </div>
 
         <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
-          {project.metrics.slice(0, 2).map((metric, index) => (
-            <div key={index}>
-              <p className="text-xs font-body text-muted-foreground mb-1">{metric.label}</p>
-              <p className="text-lg font-headline font-bold text-primary">{metric.value}</p>
-            </div>
-          ))}
+          <div>
+            <p className="text-xs font-body text-muted-foreground mb-1">Type</p>
+            <p className="text-sm font-headline font-bold text-primary">{project.type}</p>
+          </div>
+          <div>
+            <p className="text-xs font-body text-muted-foreground mb-1">Status</p>
+            <p className="text-sm font-headline font-bold text-primary">{project.status}</p>
+          </div>
         </div>
       </div>
     </div>

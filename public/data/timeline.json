@@ -1,0 +1,76 @@
+{
+  "timeline": [
+    {
+      "year": "2025-2026",
+      "title": "On-Chip Learning for Neuromorphic Accelerator",
+      "description": "Conducting research on designing energy-efficient neuromorphic hardware for spiking neural networks with on-chip learning capabilities.",
+      "type": "achievement"
+    },
+    {
+      "year": "2025-2026",
+      "title": "NeuroDrive - Vehicle Detection System",
+      "description": "Developed end-to-end vehicle detection system using YOLOv8 and Streamlit, achieving 80.6% mAP@0.5 across 8 vehicle classes.",
+      "type": "achievement"
+    },
+    {
+      "year": "2024-2025",
+      "title": "Safe Plus - Smart Safety Helmet",
+      "description": "Leading third year project developing IoT-enabled safety helmet with real-time monitoring, impact detection, and emergency alerts using Arduino/ESP32 and AWS IoT.",
+      "type": "achievement"
+    },
+    {
+      "year": "2024-2025",
+      "title": "RV32IM Pipeline Processor",
+      "description": "Implemented complete RISC-V 32-bit processor pipeline in Verilog HDL including hazard handling and comprehensive testbench verification.",
+      "type": "achievement"
+    },
+    {
+      "year": "2024-2025",
+      "title": "Real-Time Shadow Removal",
+      "description": "Developed image processing system for real-time shadow removal to improve visual quality and enhance object detection.",
+      "type": "achievement"
+    },
+    {
+      "year": "2024",
+      "title": "Frontend Developer (React) Certification",
+      "description": "Earned HackerRank Frontend Developer certification demonstrating proficiency in React.js development.",
+      "type": "certification"
+    },
+    {
+      "year": "2024",
+      "title": "Denture Design Studio",
+      "description": "Built full-stack web application using MERN stack for real-time dental education platform with student tracking and assessment features.",
+      "type": "achievement"
+    },
+    {
+      "year": "2024",
+      "title": "Introduction to Python Certification",
+      "description": "Completed Sololearn Python course, building foundation in Python programming fundamentals.",
+      "type": "certification"
+    },
+    {
+      "year": "2023",
+      "title": "C Programming Certifications",
+      "description": "Completed Sololearn Introduction to C and C Intermediate courses, strengthening programming fundamentals.",
+      "type": "certification"
+    },
+    {
+      "year": "2022",
+      "title": "University of Peradeniya",
+      "description": "Started B.Sc. Engineering (Hons.) in Computer Engineering with focus on Computer Architecture, Embedded Systems, and Machine Learning.",
+      "type": "education"
+    },
+    {
+      "year": "2020",
+      "title": "G.C.E. A/L Excellence",
+      "description": "Achieved national rank 831/29,737 with Z-score 2.0596 in Physical Science stream, securing admission to Computer Engineering.",
+      "type": "education"
+    },
+    {
+      "year": "2017",
+      "title": "G.C.E. O/L Achievement",
+      "description": "Secured 7 A and 2 C grades in G.C.E. O/L examination, demonstrating strong foundational knowledge across subjects.",
+      "type": "education"
+    }
+  ]
+}

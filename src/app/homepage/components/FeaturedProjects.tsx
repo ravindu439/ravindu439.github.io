@@ -88,8 +88,10 @@ const FeaturedProjects = ({ className = '', showAll = false }: FeaturedProjectsP
                 <AppImage
                   src={project.image}
                   alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-smooth"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+                  
                 />
                 <div className="absolute top-4 right-4">
                   <span className="px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-semibold rounded-full">

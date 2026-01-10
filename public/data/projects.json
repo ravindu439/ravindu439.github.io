@@ -1,7 +1,38 @@
 {
   "projects": [
     {
-      "id": 1,
+  "id": 1,
+  "title": "On-Chip Offline Learning for Energy-Efficient Neuromorphic Accelerator",
+  "slug": "on-chip-offline-learning-neuromorphic-accelerator",
+  "category": "Neuromorphic Computing / Hardware AI",
+  "description": "Ongoing research project exploring local, on-chip learning for energy-efficient SNN acceleration using event-driven computation.",
+  "longDescription": "Ongoing research project focused on designing a neuromorphic accelerator that supports offline on-chip learning for spiking neural networks (SNNs). The work investigates learning rules compatible with hardware constraints (e.g., local spike-timing/activity traces) and explores architectural trade-offs in synaptic memory organization, sparse event processing, and update precision to improve energy efficiency.",
+  "technologies": [
+    "Spiking Neural Networks (SNN)",
+    "On-chip Learning (Backpropagation-inspired)",
+    "Verilog HDL",
+    "FPGA Prototyping ",
+    "RISC-V / Embedded Control"
+  ],
+  "features": [
+    "Event-driven spike processing datapath",
+    "Configurable neuron and synapse modules",
+    "Local learning signal generation (timing/activity traces)",
+    "On-chip synaptic update mechanism for offline adaptation",
+    "Design-space exploration: energy/latency/memory trade-offs"
+  ],
+  "myRole": "Undergraduate Researcher (Neuromorphic Hardware)",
+  "timeline": "Aug 2025 - Present",
+  "organization": "University of Peradeniya",
+  "type": "Final Year Research Project",
+  "status": "In Progress",
+  "github": "",
+  "website": "",
+  "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b",
+  "featured": true
+},
+    {
+      "id": 2,
       "title": "Safe Plus - Smart Safety Helmet",
       "slug": "safe-plus",
       "category": "Embedded Systems",
@@ -23,11 +54,11 @@
       "status": "Completed",
       "github": "https://github.com/cepdnaclk/e20-3yp-SafePlus",
       "website": "https://cepdnaclk.github.io/e20-3yp-SafePlus/",
-      "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837",
+      "image": "/assets/project-thumbnail/safe-plus.jpg",
       "featured": true
     },
     {
-      "id": 2,
+      "id": 3,
       "title": "Denture Design Studio",
       "slug": "denture-design-studio",
       "category": "Web Development",
@@ -49,11 +80,11 @@
       "status": "Completed",
       "github": "https://github.com/cepdnaclk/e20-co227-Denture-Design-Studio",
       "website": "https://cepdnaclk.github.io/e20-co227-Denture-Design-Studio/",
-      "image": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5",
+      "image": "/assets/project-thumbnail/denture-design.png",
       "featured": true
     },
     {
-      "id": 3,
+      "id": 4,
       "title": "RV32IM Pipeline Implementation",
       "slug": "rv32im-pipeline",
       "category": "Computer Architecture",
@@ -75,10 +106,10 @@
       "status": "Completed",
       "github": "https://github.com/cepdnaclk/e20-co502-RV32IM-pipeline-implementation-group-2",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
-      "featured": true
+      "featured": false
     },
     {
-      "id": 4,
+      "id": 5,
       "title": "NeuroDrive - Vehicle Detection System",
       "slug": "neurodrive",
       "category": "Computer Vision",
@@ -99,11 +130,11 @@
       "type": "Independent Project",
       "status": "Completed",
       "github": "https://github.com/ravindu439/NeuroDrive",
-      "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d",
+      "image": "/assets/project-thumbnail/neuro-drive.png",
       "featured": false
     },
     {
-      "id": 5,
+      "id": 6,
       "title": "Real-Time Shadow Removal",
       "slug": "shadow-removal",
       "category": "Computer Vision",
@@ -122,7 +153,7 @@
       "timeline": "Nov 2024 - Mar 2025",
       "organization": "University of Peradeniya",
       "type": "Course Project (CO543)",
-      "status": "In Progress",
+      "status": "Completed",
       "github": "https://github.com/cepdnaclk/e20-co543-real-time-shadow-removal-from-images",
       "website": "https://cepdnaclk.github.io/e20-co543-real-time-shadow-removal-from-images/",
       "image": "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6",

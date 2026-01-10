@@ -123,6 +123,16 @@ export default function AboutPage() {
   },
   {
     id: 2,
+    year: "2025-2026",
+    title: "Neuromorphic Hardware Research",
+    organization: "Final Year Research Project, University of Peradeniya",
+    description: "Conducting research on energy-efficient neuromorphic accelerator design for spiking neural networks with on-chip learning capabilities. Exploring hardware-software co-design for AI at the edge.",
+    skills: ["Neuromorphic Computing", "RTL/HDL", "SNN", "FPGA", "RISC-V"],
+    icon: "CpuChipIcon",
+    type: "achievement"
+  },
+  {
+    id: 3,
     year: "2024-2025",
     title: "Casual Instructor",
     organization: "Department of Computer Engineering, University of Peradeniya",
@@ -132,27 +142,7 @@ export default function AboutPage() {
     type: "work"
   },
   {
-    id: 3,
-    year: "2024-2025",
-    title: "Safe Plus - Smart Safety Helmet",
-    organization: "University Final Year Project",
-    description: "Designed advanced smart safety helmet with real-time monitoring, impact detection, and emergency alerts for industrial workplaces. Handled complete hardware development and firmware for all monitoring features.",
-    skills: ["Arduino/ESP32", "MQTT", "AWS IoT", "Embedded Systems", "MERN Stack"],
-    icon: "CpuChipIcon",
-    type: "achievement"
-  },
-  {
     id: 4,
-    year: "2024",
-    title: "Denture Design Studio",
-    organization: "University Group Project",
-    description: "Developed graphical platform for real-time denture design practice for dental students. Implemented student activity tracking, assessor page frontend, and backend logic using Node.js/Express.js.",
-    skills: ["React.js", "Next.js", "Express.js", "MongoDB"],
-    icon: "CodeBracketIcon",
-    type: "achievement"
-  },
-  {
-    id: 5,
     year: "2024-2025",
     title: "Vice President - Hackers Club",
     organization: "University of Peradeniya",
@@ -162,14 +152,14 @@ export default function AboutPage() {
     type: "work"
   },
   {
-    id: 6,
-    year: "2024-2025",
-    title: "RV32IM Pipeline Implementation",
-    organization: "CO502 Course Project",
-    description: "Implemented RISC-V (RV32IM) processor pipeline in Verilog including IF, ID, EX, MEM, WB stages with hazard handling. Developed comprehensive testbench to verify processor functionality.",
-    skills: ["Verilog HDL", "Computer Architecture", "RISC-V", "Hardware Design"],
-    icon: "CpuChipIcon",
-    type: "achievement"
+    id: 5,
+    year: "2020",
+    title: "G.C.E. Advanced Level (A/L)",
+    organization: "National Rank: 831/29,737",
+    description: "Achieved Z-score 2.0596 in Physical Science stream, securing admission to Computer Engineering at University of Peradeniya, one of Sri Lanka's premier engineering programs.",
+    skills: ["Physics", "Chemistry", "Combined Mathematics"],
+    icon: "AcademicCapIcon",
+    type: "education"
   }];
 
 

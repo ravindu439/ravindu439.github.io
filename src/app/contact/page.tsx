@@ -5,7 +5,7 @@ import ContactHero from './components/ContactHero';
 import ContactMethods from './components/ContactMethods';
 import ContactFormSection from './components/ContactFormSection';
 import SocialLinks from './components/SocialLinks';
-import QuickActions from './components/QuickActions';
+
 import ResponseInfo from './components/ResponseInfo';
 
 export const metadata: Metadata = {
@@ -24,14 +24,13 @@ export default function ContactPage() {
         <ContactFormSection />
         <ResponseInfo />
         <SocialLinks />
-        <QuickActions />
       </main>
 
       <footer className="bg-card border-t border-border py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-sm text-secondary font-body">
-              &copy; {new Date().getFullYear()} TechFolio Pro. All rights reserved.
+              &copy; {new Date().getFullYear()}All rights reserved.
             </p>
             <p className="text-xs text-secondary/70 font-body mt-2">
               Built with Next.js, TypeScript, and Tailwind CSS

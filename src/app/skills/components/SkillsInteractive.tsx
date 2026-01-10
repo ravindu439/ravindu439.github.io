@@ -50,9 +50,15 @@ export default function SkillsInteractive() {
   const [isHydrated, setIsHydrated] = useState(false);
   const [activeTab, setActiveTab] = useState<'skills' | 'certifications' | 'journey'>('skills');
   const [selectedCertification, setSelectedCertification] = useState<Certification | null>(null);
+  const [timelineEvents, setTimelineEvents] = useState<TimelineEvent[]>([]);
 
   useEffect(() => {
     setIsHydrated(true);
+    // Fetch timeline from JSON
+    fetch('/data/timeline.json')
+      .then(res => res.json())
+      .then(data => setTimelineEvents(data.timeline))
+      .catch(err => console.error('Error loading timeline:', err));
   }, []);
 
   const skillCategories: SkillCategoryData[] = [
@@ -176,51 +182,6 @@ export default function SkillsInteractive() {
   }];
 
 
-  const timelineEvents: TimelineEvent[] = [
-  {
-    year: "2025",
-    title: "Safe Plus - Smart Safety Helmet",
-    description: "Leading final year project developing IoT-enabled safety helmet with real-time monitoring, impact detection, and emergency alerts using Arduino/ESP32 and AWS IoT.",
-    type: "achievement"
-  },
-  {
-    year: "2024-2025",
-    title: "RV32IM Pipeline Processor",
-    description: "Implemented complete RISC-V 32-bit processor pipeline in Verilog HDL including hazard handling and comprehensive testbench verification.",
-    type: "achievement"
-  },
-  {
-    year: "2024-2025",
-    title: "Teaching & Leadership",
-    description: "Served as Casual Instructor for Python, Assembly, and Verilog courses. Vice President of Hackers Club, organizing Web Development and ML workshops.",
-    type: "education"
-  },
-  {
-    year: "2024",
-    title: "Denture Design Studio",
-    description: "Built full-stack web application using MERN stack for real-time dental education platform with student tracking and assessment features.",
-    type: "achievement"
-  },
-  {
-    year: "2023-2024",
-    title: "Computer Vision Projects",
-    description: "Developed NeuroDrive (driver behavior monitoring) and shadow removal systems using Python, OpenCV, TensorFlow, and YOLOv8.",
-    type: "achievement"
-  },
-  {
-    year: "2022",
-    title: "University of Peradeniya",
-    description: "Started B.Sc. Engineering (Hons.) in Computer Engineering with focus on Computer Architecture, Embedded Systems, and Machine Learning.",
-    type: "education"
-  },
-  {
-    year: "2020",
-    title: "G.C.E. A/L Excellence",
-    description: "Achieved national rank 831/29,737 with Z-score 2.0596 in Physical Science stream, securing admission to Computer Engineering.",
-    type: "certification"
-  }];
-
-
   const metrics: Metric[] = [
   {
     label: "Current GPA",
@@ -309,7 +270,7 @@ export default function SkillsInteractive() {
 
             <div className="flex items-center space-x-2">
               <Icon name="AcademicCapIcon" size={20} variant={activeTab === 'certifications' ? 'solid' : 'outline'} />
-              <span>Roles & Experience</span>
+              <span>Roles ,Experience & certifications</span>
             </div>
           </button>
           <button
