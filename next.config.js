@@ -4,8 +4,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/ravindu439.github.io' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/ravindu439.github.io/' : '',
+  // Since your repo is ravindu439.github.io (user/org page), no basePath needed
+  // basePath: '',
+  // assetPrefix: '',
 };
 
 module.exports = nextConfig;

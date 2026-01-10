@@ -48,8 +48,7 @@
     "serve": "next start",
     "type-check": "tsc --noEmit",
     "predeploy": "npm run build",
-  "deploy": "gh-pages -d out -b main -t docs"
-
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@dhiwise/component-tagger": "^1.0.14",
