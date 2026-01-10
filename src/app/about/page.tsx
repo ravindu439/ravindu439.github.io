@@ -160,7 +160,17 @@ export default function AboutPage() {
     skills: ["Physics", "Chemistry", "Combined Mathematics"],
     icon: "AcademicCapIcon",
     type: "education"
-  }];
+  },
+{
+    id: 6,
+    year: "2017",
+    title: "G.C.E. Ordinary Level (O/L)",
+    organization: "Distinction in 9 Subjects",
+    description: "Excelled in G.C.E. O/L examinations with distinctions in Mathematics, Science, Sinhala, Buddhism, Art, History, English, Geography, and Agriculture.Secured a strong foundation for advanced studies in Physical Science stream.",
+    skills: ["Mathematics", "Science", "Sinhala", "Buddhism", "Art","History", "English", "Geography","Agriculture"],
+    icon: "AcademicCapIcon",
+    type: "education"
+}];
 
 
   const missionData = {

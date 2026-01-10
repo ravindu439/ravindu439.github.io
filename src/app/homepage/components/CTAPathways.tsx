@@ -102,10 +102,10 @@ const CTAPathways = ({ className = '' }: CTAPathwaysProps) => {
           <p className="text-sm font-body text-muted-foreground mb-4">
             Looking for something specific?
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4 color text-foreground ">
             <Link
               href="/about"
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-muted text-foreground rounded-lg font-body font-medium hover:bg-muted/80 transition-smooth"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-100 text-blue-700 border border-blue-200 rounded-lg font-body font-medium hover:bg-blue-200 transition-smooth"
             >
               <Icon name="UserIcon" size={16} variant="outline" />
               <span>About Me</span>
@@ -113,7 +113,7 @@ const CTAPathways = ({ className = '' }: CTAPathwaysProps) => {
             <a
               href="/assets/resume.pdf"
               download
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-muted text-foreground rounded-lg font-body font-medium hover:bg-muted/80 transition-smooth"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-100 text-blue-700 border border-blue-200 rounded-lg font-body font-medium hover:bg-blue-200 transition-smooth shadow-card"
             >
               <Icon name="ArrowDownTrayIcon" size={16} variant="outline" />
               <span>Download Resume</span>
