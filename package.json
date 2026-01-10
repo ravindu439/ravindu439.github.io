@@ -48,7 +48,7 @@
     "serve": "next start",
     "type-check": "tsc --noEmit",
     "predeploy": "npm run build",
-  "deploy": "gh-pages -d out -b gh-pages"
+  "deploy": "gh-pages -d out -b main -t docs"
 
   },
   "dependencies": {
