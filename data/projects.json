@@ -1,0 +1,132 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Safe Plus - Smart Safety Helmet",
+      "slug": "safe-plus",
+      "category": "Embedded Systems",
+      "description": "Advanced smart safety helmet integrating real-time monitoring, impact detection, and emergency alert systems for industrial workplaces.",
+      "longDescription": "Designed an advanced smart safety helmet with real-time monitoring, impact detection, and emergency alerts. Enhanced worker safety by enabling immediate hazard detection (toxic gas, impacts, falls) and automated supervisor connectivity via dashboard.",
+      "technologies": ["Arduino/ESP32", "MQTT", "AWS IoT", "MERN Stack", "Embedded C"],
+      "features": [
+        "Real-time toxic gas detection",
+        "Impact and fall detection",
+        "Emergency alert system",
+        "Supervisor dashboard",
+        "Cloud-based monitoring"
+      ],
+      "myRole": "Hardware Lead & Firmware Developer",
+      "myContribution": "Handled complete hardware development, including sensor integration into the helmet, and wrote firmware for all real-time monitoring features.",
+      "timeline": "Nov 2024 - Jul 2025",
+      "organization": "University of Peradeniya",
+      "type": "Third Year Project",
+      "status": "Completed",
+      "github": "https://github.com/cepdnaclk/e20-3yp-SafePlus",
+      "website": "https://cepdnaclk.github.io/e20-3yp-SafePlus/",
+      "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Denture Design Studio",
+      "slug": "denture-design-studio",
+      "category": "Web Development",
+      "description": "Interactive dental education platform for real-time denture design practice with self-evaluation capabilities.",
+      "longDescription": "Developed a graphical platform for real-time denture design practice for dental students, providing a safe learning environment with self-evaluation features.",
+      "technologies": ["React.js", "Next.js", "Express.js", "MongoDB", "Node.js"],
+      "features": [
+        "Real-time design interface",
+        "Student activity tracking",
+        "Self-evaluation system",
+        "Assessor dashboard",
+        "Model answer comparison"
+      ],
+      "myRole": "Full Stack Developer",
+      "myContribution": "Implemented student activity tracking, developed the Assessor page frontend, and built the backend logic using Node.js/Express.js.",
+      "timeline": "Aug 2024 - Nov 2024",
+      "organization": "University of Peradeniya",
+      "type": "Second Year Project",
+      "status": "Completed",
+      "github": "https://github.com/cepdnaclk/e20-co227-Denture-Design-Studio",
+      "website": "https://cepdnaclk.github.io/e20-co227-Denture-Design-Studio/",
+      "image": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "RV32IM Pipeline Implementation",
+      "slug": "rv32im-pipeline",
+      "category": "Computer Architecture",
+      "description": "5-stage RISC-V processor pipeline implementation in Verilog with comprehensive verification.",
+      "longDescription": "Implemented a RISC-V (RV32IM) processor pipeline in Verilog, including stages for instruction fetch, decode, execute, memory access, and write-back with hazard handling.",
+      "technologies": ["Verilog HDL", "GTKWave", "Synopsys EDA"],
+      "features": [
+        "5-stage pipeline (IF, ID, EX, MEM, WB)",
+        "Hazard detection and forwarding",
+        "RV32IM instruction set",
+        "Comprehensive testbench",
+        "Timing verification"
+      ],
+      "myRole": "Hardware Designer",
+      "myContribution": "Implemented pipeline stages and developed testbench for verification.",
+      "timeline": "Nov 2024 - Mar 2025",
+      "organization": "University of Peradeniya",
+      "type": "Course Project (CO502)",
+      "status": "Completed",
+      "github": "https://github.com/cepdnaclk/e20-co502-RV32IM-pipeline-implementation-group-2",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "NeuroDrive - Vehicle Detection System",
+      "slug": "neurodrive",
+      "category": "Computer Vision",
+      "description": "End-to-end vehicle detection and classification system using YOLOv8 with web interface.",
+      "longDescription": "Built an end-to-end computer vision application for vehicle detection and classification across 8 vehicle classes, achieving 80.6% mAP@0.5.",
+      "technologies": ["Python", "YOLOv8", "Streamlit", "OpenCV", "PyTorch"],
+      "features": [
+        "8-class vehicle detection",
+        "Single image and batch processing",
+        "Real-time inference",
+        "Visualization dashboard",
+        "CSV report generation"
+      ],
+      "myRole": "Developer",
+      "myContribution": "Trained custom YOLOv8 model and implemented Streamlit UI with automated outputs.",
+      "timeline": "Oct 2025 - Jan 2026",
+      "organization": "Personal Project",
+      "type": "Independent Project",
+      "status": "Completed",
+      "github": "https://github.com/ravindu439/NeuroDrive",
+      "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d",
+      "featured": false
+    },
+    {
+      "id": 5,
+      "title": "Real-Time Shadow Removal",
+      "slug": "shadow-removal",
+      "category": "Computer Vision",
+      "description": "Image processing system for real-time shadow removal to enhance visual quality.",
+      "longDescription": "Developed an image processing system for real-time shadow removal to improve visual quality and enhance object detection in real-world applications.",
+      "technologies": ["Python", "OpenCV", "TensorFlow", "PyTorch"],
+      "features": [
+        "Shadow region detection",
+        "Color gradient analysis",
+        "Texture-based detection",
+        "Real-time processing",
+        "Image enhancement"
+      ],
+      "myRole": "Computer Vision Developer",
+      "myContribution": "Implemented shadow detection algorithms and image enhancement techniques.",
+      "timeline": "Nov 2024 - Mar 2025",
+      "organization": "University of Peradeniya",
+      "type": "Course Project (CO543)",
+      "status": "In Progress",
+      "github": "https://github.com/cepdnaclk/e20-co543-real-time-shadow-removal-from-images",
+      "website": "https://cepdnaclk.github.io/e20-co543-real-time-shadow-removal-from-images/",
+      "image": "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6",
+      "featured": false
+    }
+  ]
+}
