@@ -1,0 +1,105 @@
+{
+  "education": [
+    {
+      "id": 1,
+      "level": "Undergraduate",
+      "degree": "B.Sc. Engineering (Hons.) Computer Engineering",
+      "institution": "University of Peradeniya",
+      "location": "Peradeniya, Sri Lanka",
+      "duration": "Nov 2022 - Present",
+      "gpa": "3.59",
+      "maxGpa": "4.0",
+      "status": "In Progress",
+      "highlights": [
+        "Focused on Computer Architecture and Embedded Systems",
+        "Active member of Hackers Club (Vice President)",
+        "Casual Instructor for GP106 and CO224 courses",
+        "Participated in multiple research projects"
+      ],
+      "relevantCourses": [
+        "Computer Architecture",
+        "Embedded Systems Design",
+        "Data Structures and Algorithms",
+        "Database Management Systems",
+        "Computer Networks",
+        "Machine Learning",
+        "Digital Design",
+        "Operating Systems"
+      ]
+    },
+    {
+      "id": 2,
+      "level": "Advanced Level",
+      "degree": "G.C.E. Advanced Level (Physical Science)",
+      "institution": "B/Orubediwewa Central College",
+      "location": "Mahiyanganaya, Sri Lanka",
+      "duration": "Jun 2018 - Oct 2020",
+      "results": [
+        {
+          "subject": "Combined Mathematics",
+          "grade": "A"
+        },
+        {
+          "subject": "Physics",
+          "grade": "A"
+        },
+        {
+          "subject": "Chemistry",
+          "grade": "A"
+        }
+      ],
+      "achievements": {
+        "zScore": "2.0596",
+        "nationalRank": "831 out of 29,737",
+        "districtRank": "12 out of 1,947",
+        "district": "Badulla"
+      }
+    },
+    {
+      "id": 3,
+      "level": "Ordinary Level",
+      "degree": "G.C.E. Ordinary Level",
+      "institution": "CP/Tel Minipe Junior secondary school",
+      "location": "Minipe, Sri Lanka",
+      "duration": "2007- 2017",
+      "results": [
+        {
+          "subject": "Mathematics",
+          "grade": "A"
+        },
+        {
+          "subject": "Science",
+          "grade": "A"
+        },
+        {
+          "subject": "English",
+          "grade": "C"
+        },
+        {
+          "subject": "Sinhala",
+          "grade": "A"
+        },
+        {
+          "subject": "History",
+          "grade": "A"
+        },
+        {
+          "subject": "Buddhism",
+          "grade": "A"
+        },
+        {
+          "subject": "Geography",
+          "grade": "A"
+        },
+        {
+          "subject": "Art",
+          "grade": "C"
+        },
+        {
+          "subject": "Agriculture",
+          "grade": "A"
+        }
+      ]
+    }
+  ]
+}
