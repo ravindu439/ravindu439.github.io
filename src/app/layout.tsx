@@ -8,8 +8,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Next.js with Tailwind CSS',
-  description: 'A boilerplate project with Next.js and Tailwind CSS',
+  title: 'Ravindu Lakshan portfolio',
+  description: 'Portfolio of Ravindu Lakshan, a computer engineering undergraduate showcasing projects, skills, and experience in computer architecture, embedded systems, and software development.',
   icons: {
     icon: [
       { url: '/favicon.ico', type: 'image/x-icon' }
