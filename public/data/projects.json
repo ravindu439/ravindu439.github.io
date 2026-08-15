@@ -158,6 +158,59 @@
       "website": "https://cepdnaclk.github.io/e20-co543-real-time-shadow-removal-from-images/",
       "image": "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6",
       "featured": false
+    },
+    {
+      "id": 7,
+      "title": "Peak Load Detection System",
+      "slug": "peak-load-detection-system",
+      "category": "IoT / Edge AI",
+      "description": "Edge AI-based IoT system for real-time industrial peak power detection using an ensemble ML detector across dual live dashboards.",
+      "longDescription": "Built an Edge AI-based IoT system that detects peak industrial power demand in real time using an ESP32 sensor node, Python edge inference, and dual dashboards (Node-RED for live monitoring, Grafana for historical analysis). Sensor readings are evaluated through an ensemble of Threshold, Z-score, and Isolation Forest detectors and streamed over a decoupled MQTT architecture into a Dockerized backend pipeline for ingestion, storage, and dashboarding of sensor telemetry.",
+      "technologies": ["Python", "scikit-learn", "Docker", "MQTT", "InfluxDB", "Grafana", "Node-RED", "ESP32", "C++"],
+      "features": [
+        "Real-time peak detection via ensemble ML (Threshold + Z-score + Isolation Forest)",
+        "Dual dashboards: Node-RED for live monitoring, Grafana for historical trends",
+        "Decoupled, scalable MQTT-based messaging architecture",
+        "Dockerized backend pipeline for ingestion, storage, and dashboarding",
+        "Fully configurable thresholds, polling rates, and detection algorithms"
+      ],
+      "myRole": "Group Project Contributor",
+      "myContribution": "Developed the Dockerized backend pipeline (MQTT/InfluxDB/Grafana/Node-RED) handling ingestion, storage, and dashboarding of sensor telemetry.",
+      "timeline": "Nov 2025 - Apr 2026",
+      "organization": "University of Peradeniya",
+      "type": "Third Year Project (CO326)",
+      "status": "Completed",
+      "github": "https://github.com/cepdnaclk/e20-co326-Peak-Load-Detection-System",
+      "website": "https://cepdnaclk.github.io/e20-co326-Peak-Load-Detection-System/",
+      "image": "https://raw.githubusercontent.com/cepdnaclk/e20-co326-Peak-Load-Detection-System/main/docs/images/hrdware_implementations.png",
+      "featured": true
+    },
+    {
+      "id": 8,
+      "title": "Gayani Communications POS System",
+      "slug": "gayani-communications-pos",
+      "category": "Desktop Application",
+      "description": "Offline-first Point of Sale and business management desktop app built for a small retail communications shop.",
+      "longDescription": "Designed and built a fully local Point of Sale and business management desktop application for Gayani Communication & Book Shop, packaged as a Windows Electron app so it runs entirely offline with no cloud dependency. Includes a live dashboard with KPIs and revenue charts, a billing screen with PDF invoice generation and printing, inventory management with low-stock alerts, sales history with filtering and refunds, and reporting on revenue trends and top products.",
+      "technologies": ["React", "Vite", "Express.js", "MongoDB", "Electron", "Tailwind CSS", "Recharts", "jsPDF"],
+      "features": [
+        "Dashboard with KPIs, revenue chart, recent bills, and low-stock alerts",
+        "Billing screen with live calculations, PDF invoice generation, and printing",
+        "Inventory management with add/edit/soft-delete and low-stock filtering",
+        "Sales history with filters, bill view modal, and refund handling",
+        "Reports for revenue trend, top products, and inventory value",
+        "Packaged as a Windows desktop app (Electron) that runs fully offline"
+      ],
+      "myRole": "Solo Developer",
+      "myContribution": "Designed and built the full system end-to-end (React/Vite frontend, Express/MongoDB backend, and Electron packaging) as a freelance deployment for a retail shop client.",
+      "timeline": "2026",
+      "organization": "Freelance / Gayani Communication & Book Shop",
+      "type": "Independent Project",
+      "status": "In Use",
+      "github": "https://github.com/ravindu439/Gayani_Communication",
+      "website": "",
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d",
+      "featured": true
     }
   ]
 }

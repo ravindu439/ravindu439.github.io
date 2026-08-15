@@ -16,19 +16,19 @@ const SocialProofSection = ({ className = '' }: SocialProofSectionProps) => {
   const metrics: SocialProofMetric[] = [
     {
       icon: 'AcademicCapIcon',
-      value: '3.59',
+      value: '3.64',
       label: 'Current GPA',
       color: 'text-primary',
     },
     {
       icon: 'CodeBracketIcon',
-      value: '5',
+      value: '8',
       label: 'Major Projects',
       color: 'text-brand-emerald',
     },
     {
       icon: 'CpuChipIcon',
-      value: '2',
+      value: '3',
       label: 'Hardware Projects',
       color: 'text-accent',
     },

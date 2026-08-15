@@ -84,6 +84,12 @@ export default function AboutPage() {
     title: "Innovation & Projects",
     description: "Leading multiple projects in embedded systems, computer vision, and RISC-V processor design.",
     icon: "RocketLaunchIcon"
+  },
+  {
+    year: "2026",
+    title: "Software Engineering Internship",
+    description: "Joined WSO2 as a Software Engineering Intern, contributing SCIM 2.0 support to the Thunder Go-based open-source IAM platform.",
+    icon: "BriefcaseIcon"
   }];
 
 
@@ -116,10 +122,30 @@ export default function AboutPage() {
     year: "2022-Present",
     title: "B.Sc. Engineering (Hons.) Computer Engineering",
     organization: "University of Peradeniya",
-    description: "Current GPA: 3.59/4.0. Focused on Computer Architecture, Embedded Systems, Machine Learning, and Software Development. Active in technical societies and research projects.",
+    description: "Current GPA: 3.64/4.0. Focused on Computer Architecture, Embedded Systems, Machine Learning, and Software Development. Active in technical societies and research projects.",
     skills: ["Computer Architecture", "Verilog HDL", "Python", "C/C++", "React.js", "Machine Learning"],
     icon: "AcademicCapIcon",
     type: "education"
+  },
+  {
+    id: 7,
+    year: "Apr 2026-Present",
+    title: "Software Engineering Intern",
+    organization: "WSO2 - Thunder IAM Platform",
+    description: "Implementing SCIM 2.0 (RFC 7643/7644) support for Thunder, WSO2's Go-based open-source IAM platform, including Users, Groups, Schemas, ServiceProviderConfig and ResourceTypes endpoints. Built RFC-compliant REST endpoints with request validation, error handling, and multi-valued/complex attribute support, integrated into the auth middleware with CORS and permission-scoped authorization. Wrote unit tests using Go Mockery for service interfaces, achieving high coverage across handler, service, and resource layers.",
+    skills: ["Go", "REST APIs", "SCIM 2.0", "Go Mockery", "Git"],
+    icon: "CpuChipIcon",
+    type: "work"
+  },
+  {
+    id: 8,
+    year: "2024-Present",
+    title: "Freelance Software Developer",
+    organization: "Self-Employed",
+    description: "Delivered custom software solutions end-to-end (requirements to deployment) for diverse clients, building responsive web apps and automation scripts using modern tools while meeting deadlines and quality expectations.",
+    skills: ["React", "Node.js", "Express.js", "MongoDB", "Electron"],
+    icon: "BriefcaseIcon",
+    type: "work"
   },
   {
     id: 2,

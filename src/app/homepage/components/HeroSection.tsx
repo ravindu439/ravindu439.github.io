@@ -69,7 +69,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                 Hi, I'm <span className="text-accent">Ravindu Lakshan</span>
               </h1>
               <h2 className="text-2xl sm:text-3xl font-headline font-semibold text-white/90">
-                4th Year Computer Engineering Undergraduate
+                Final-Year Computer Engineering Undergraduate
               </h2>
             </div>
 
@@ -87,7 +87,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
             </div>
 
             <p className="text-lg font-body text-white/70 max-w-xl">
-              Passionate about Computer Architecture, Embedded Systems, and Neuromorphic Computing. Hands-on experience in Machine Learning, Computer Vision, and Full-Stack Development.
+              Currently interning at WSO2, building backend services in Go for a Go-based open-source IAM platform. Passionate about Computer Architecture, Embedded Systems, and Neuromorphic Computing, with hands-on experience in Machine Learning, Computer Vision, and Full-Stack Development.
             </p>
 
             {/* CTA Buttons */}

@@ -83,7 +83,9 @@ export default function SkillsInteractive() {
     { name: "Next.js", level: 85, yearsOfExperience: 2, projects: 3 },
     { name: "Node.js", level: 82, yearsOfExperience: 2, projects: 3 },
     { name: "Express.js", level: 85, yearsOfExperience: 2, projects: 4 },
-    { name: "MongoDB", level: 80, yearsOfExperience: 2, projects: 3 },
+    { name: "MongoDB", level: 80, yearsOfExperience: 2, projects: 4 },
+    { name: "Flask", level: 72, yearsOfExperience: 1, projects: 1 },
+    { name: "REST APIs", level: 85, yearsOfExperience: 2, projects: 5 },
   {name:"streamlit", level: 75, yearsOfExperience: 0.5, projects: 1 }]
 
   },
@@ -92,10 +94,13 @@ export default function SkillsInteractive() {
     icon: "💻",
     color: "bg-emerald-500",
     skills: [
+    { name: "Go", level: 75, yearsOfExperience: 0.5, projects: 1 },
     { name: "Python", level: 90, yearsOfExperience: 3, projects: 3 },
+    { name: "Java", level: 75, yearsOfExperience: 2, projects: 1 },
     { name: "C/C++", level: 85, yearsOfExperience: 3, projects: 2 },
-    { name: "JavaScript", level: 88, yearsOfExperience: 2, projects: 3 },
+    { name: "JavaScript", level: 88, yearsOfExperience: 2, projects: 4 },
     { name: "TypeScript", level: 80, yearsOfExperience: 1, projects: 1 },
+    { name: "SQL", level: 75, yearsOfExperience: 2, projects: 2 },
     { name: "Assembly", level: 75, yearsOfExperience: 2, projects: 0 }]
 
   },
@@ -108,16 +113,20 @@ export default function SkillsInteractive() {
     { name: "OpenCV", level: 85, yearsOfExperience: 2, projects: 2 },
     { name: "Scikit-learn", level: 78, yearsOfExperience: 1, projects: 2 },
     { name: "NumPy/Pandas", level: 85, yearsOfExperience: 2, projects: 3 },
+    { name: "Matplotlib", level: 78, yearsOfExperience: 1, projects: 2 },
     { name: "YOLOv8", level: 75, yearsOfExperience: 1, projects: 1 }]
 
   },
   {
-    title: "IoT & Cloud",
+    title: "IoT, Cloud & DevOps",
     icon: "☁️",
     color: "bg-cyan-500",
     skills: [
     { name: "AWS IoT", level: 75, yearsOfExperience: 1, projects: 1 },
-    { name: "MQTT Protocol", level: 80, yearsOfExperience: 1, projects: 1 },
+    { name: "MQTT Protocol", level: 80, yearsOfExperience: 1, projects: 2 },
+    { name: "Docker", level: 78, yearsOfExperience: 1, projects: 2 },
+    { name: "Google Cloud Platform", level: 70, yearsOfExperience: 1, projects: 1 },
+    { name: "Linux", level: 80, yearsOfExperience: 2, projects: 3 },
     { name: "Firebase", level: 70, yearsOfExperience: 1, projects: 1 }]
 
   },
@@ -128,7 +137,10 @@ export default function SkillsInteractive() {
     skills: [
     { name: "Git/GitHub", level: 92, yearsOfExperience: 3, projects: 8 },
     { name: "VS Code", level: 90, yearsOfExperience: 3, projects: 10},
+    { name: "Go Mockery", level: 75, yearsOfExperience: 0.5, projects: 1 },
+    { name: "JUnit", level: 70, yearsOfExperience: 1, projects: 1 },
     { name: "Postman", level: 80, yearsOfExperience: 2, projects: 3 },
+    { name: "Synopsys EDA (ICC2/PrimePower)", level: 72, yearsOfExperience: 1, projects: 1 },
     { name: "Vivado/Modelsim", level: 75, yearsOfExperience: 1, projects: 1 }]
 
   }];
@@ -185,19 +197,19 @@ export default function SkillsInteractive() {
   const metrics: Metric[] = [
   {
     label: "Current GPA",
-    value: "3.59/4.0",
+    value: "3.64/4.0",
     icon: "AcademicCapIcon",
     color: "bg-primary"
   },
   {
     label: "Projects Completed",
-    value: "5",
+    value: "8",
     icon: "CheckBadgeIcon",
     color: "bg-success"
   },
   {
     label: "Hardware Projects",
-    value: "2",
+    value: "3",
     icon: "CpuChipIcon",
     color: "bg-accent"
   },
