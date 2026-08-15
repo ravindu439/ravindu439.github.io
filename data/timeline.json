@@ -1,6 +1,30 @@
 {
   "timeline": [
     {
+      "year": "2026",
+      "title": "Software Engineering Intern - WSO2 (Thunder IAM Platform)",
+      "description": "Implementing SCIM 2.0 (RFC 7643/7644) support for Thunder, WSO2's Go-based open-source IAM platform, including Users, Groups, Schemas, ServiceProviderConfig and ResourceTypes endpoints, with unit tests using Go Mockery.",
+      "type": "achievement"
+    },
+    {
+      "year": "2026",
+      "title": "Gayani Communications POS System",
+      "description": "Built a fully offline Point of Sale and business management desktop app (React, Express, MongoDB, Electron) for a retail communications shop as a freelance client project.",
+      "type": "achievement"
+    },
+    {
+      "year": "2025-2026",
+      "title": "Peak Load Detection System",
+      "description": "Built an Edge AI-based IoT system for real-time industrial peak power detection using an ensemble detector (Threshold + Z-score + Isolation Forest) with a Dockerized MQTT/InfluxDB/Grafana/Node-RED pipeline.",
+      "type": "achievement"
+    },
+    {
+      "year": "2024-Present",
+      "title": "Freelance Software Developer",
+      "description": "Delivering custom software solutions end-to-end, from requirements to deployment, for diverse clients as a self-employed developer.",
+      "type": "achievement"
+    },
+    {
       "year": "2025-2026",
       "title": "On-Chip Learning for Neuromorphic Accelerator",
       "description": "Conducting research on designing energy-efficient neuromorphic hardware for spiking neural networks with on-chip learning capabilities.",
